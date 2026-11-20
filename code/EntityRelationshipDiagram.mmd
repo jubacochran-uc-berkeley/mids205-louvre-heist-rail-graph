@@ -1,0 +1,73 @@
+erDiagram
+    STATIONS {
+        Long   uic
+        String name
+        Double lat
+        Double lon
+        Point  location
+        Long   line_code
+        String line_code_norm
+        Long   pk_m
+        String PK_feature "DB column:PK"
+    }
+
+    LINE {
+        Long   line_code
+        String line_code_norm
+        String line_name
+        String region_name
+        Long   pkf_m
+        String PKF
+        Long   pkd_m
+        String PKD
+    }
+
+    ROUTE {
+        String id
+    }
+
+    %% Relationship-entities
+
+    TRACK {
+        Long   line_code
+        String type
+        Float  weight_m
+        Long   delta_m
+        Double geo_dist_m
+    }
+
+    SERVES {
+        Long   stop_order
+    }
+
+    NEXT_STOP {
+        Long   order_from
+        String route_id
+    }
+
+    CONNECTION {
+        Long   time
+    }
+
+    %% Structural relationships
+
+    %% Station on a line
+    STATIONS ||--o{ LINE      : ON_LINE
+
+    %% TRACK between two stations, on a line
+    STATIONS ||--o{ TRACK     : FROM_STATION
+    STATIONS ||--o{ TRACK     : TO_STATION
+    LINE     ||--o{ TRACK     : ON_LINE_SEGMENT
+
+    %% SERVES: a Route serving a Station
+    ROUTE    ||--o{ SERVES    : ROUTE
+    STATIONS ||--o{ SERVES    : STATION
+
+    %% NEXT_STOP: ordered adjacency of stations along a route
+    STATIONS ||--o{ NEXT_STOP : FROM_STATION
+    STATIONS ||--o{ NEXT_STOP : TO_STATION
+    ROUTE    ||--o{ NEXT_STOP : VIA_ROUTE
+
+    %% CONNECTION: generic connection between two stations
+    STATIONS ||--o{ CONNECTION : FROM_STATION
+    STATIONS ||--o{ CONNECTION : TO_STATION

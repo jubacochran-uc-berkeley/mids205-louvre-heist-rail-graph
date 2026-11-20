@@ -1,0 +1,29 @@
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Python cruft
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+*.env
+
+# Data (track via Git LFS or selected files only)
+
+
+# Logs / temp
+logs/
+tmp/
+.DS_Store
+.python-version
+.history/

@@ -1,0 +1,16 @@
+[project]
+name = "mids205-louvre-heist-rail-graph"
+version = "0.1.0"
+description = "French rail network as a Neo4j graph with Cypher and Graph Data Science, UC Berkeley MIDS DATASCI 205"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.1.0",
+    "jupyterlab>=4.4.10",
+    "lxml>=6.0.2",
+    "neo4j>=6.0.3",
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "pyprojroot>=0.3.0",
+    "python-dotenv>=1.2.1",
+]
